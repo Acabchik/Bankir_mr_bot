@@ -1,4 +1,4 @@
-# Bankir_mr_bot
+# bot.py
 
 pip install pyTelegramBotAPI
 
