@@ -1,13 +1,13 @@
 # bot.py
 
-pip install pyTelegramBotAPI
 
 import telebot
 from telebot import types
 import json
 import os
 
-TOKEN = "ТУТ_ТВІЙ_ТОКЕН"
+TOKEN = "8762441973:AAEMSpeeD4IORAJDsDfxUMsBdVy5AoZhc80"
+
 bot = telebot.TeleBot(TOKEN)
 
 SETTINGS_FILE = "settings.json"
@@ -124,4 +124,22 @@ def calculate(message):
     except:
         bot.send_message(chat_id, "Введи число")
 
-bot.polling()
+import threading
+from flask import Flask
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "I'm alive"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = threading.Thread(target=run)
+    t.start()
+
+if __name__ == "__main__":
+    keep_alive()  # Запускає сервер у фоні
+    bot.infinity_polling() # Бот працює без зупинок
